@@ -1,8 +1,5 @@
 package com.filmRecommender.model.relationships_models;
 
-import java.util.List;
-
-import com.filmRecommender.model.Compositor;
 import com.filmRecommender.model.Duracion;
 import com.filmRecommender.model.Pelicula;
 

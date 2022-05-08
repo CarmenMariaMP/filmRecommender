@@ -37,6 +37,6 @@ public class PaisRelationship {
     @Override
     public String toString() {
         // TODO Auto-generated method stub
-        return "-[:dirigida {peso:"+peso+"}]-> "+paises.get(0)+")";
+        return "-[:de {peso:"+peso+"}]-> "+paises.get(0)+")";
     }
 }
