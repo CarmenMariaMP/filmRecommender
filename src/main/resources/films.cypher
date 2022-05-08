@@ -6,9 +6,9 @@ LOAD CSV WITH HEADERS  FROM 'file:///films.csv' AS row
                            MERGE(ps:Pais{nombre: row.pais})
                            MERGE(du:Duracion{duracion: row.duracion})
                            MERGE(a:Actor{nombre: row.actor})
-                           MERGE (p)-[:dirigida{peso:1.}]->(d)
-                           MERGE (p)-[:guionizada{peso:1.}]->(g)
-                           MERGE (p)-[:compuesta{peso:1.}]->(c)
-                           MERGE (p)-[:de{peso:1.}]->(ps)
-                           MERGE (p)-[:dura{peso:1.}]->(du)
-                           MERGE (p)-[:actua{peso:1.}]->(a);
+                           MERGE (p)-[:dirigida{peso:1.0}]->(d)
+                           MERGE (p)-[:guionizada{peso:1.0}]->(g)
+                           MERGE (p)-[:compuesta{peso:1.0}]->(c)
+                           MERGE (p)-[:de{peso:1.0}]->(ps)
+                           MERGE (p)-[:dura{peso:1.0}]->(du)
+                           MERGE (p)-[:actua{peso:1.0}]->(a);
