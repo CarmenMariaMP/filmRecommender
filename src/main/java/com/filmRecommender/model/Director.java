@@ -1,14 +1,10 @@
 package com.filmRecommender.model;
 
 import java.io.Serializable;
-import java.util.List;
-
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import org.springframework.data.neo4j.core.schema.GeneratedValue;
 import org.springframework.data.neo4j.core.schema.Id;
 import org.springframework.data.neo4j.core.schema.Node;
-import org.springframework.data.neo4j.core.schema.Relationship;
 import org.springframework.data.neo4j.core.schema.Property;
 import org.springframework.data.neo4j.core.support.UUIDStringGenerator;
 
@@ -18,7 +14,7 @@ import lombok.Setter;
 @Node
 @Getter
 @Setter
-public class Pelicula implements Serializable {
+public class Director implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -28,23 +24,5 @@ public class Pelicula implements Serializable {
 
     @Property("nombre")
     private String nombre;
-
-    @Relationship(type = "dirigida")
-    private List<Director> directores;
-
-    @Relationship(type = "guionizada")
-    private List<Guionista> guionistas;
-
-    @Relationship(type = "compuesta")
-    private List<Compositor> compositor;
-
-    @Relationship(type = "de")
-    private List<Pais> paises;
-
-    @Relationship(type = "dura")
-    private Duracion duracion;
-
-    @Relationship(type = "actua")
-    private List<Actor> acores;
     
 }
