@@ -17,7 +17,7 @@ public class FilmsRecommenderService {
 
     public  void  runExample(){
         System.out.println("Peliculas con el director: ");
-        Collection<Pelicula> films = filmRepository.findFilmsByDirector("Michael Curtiz");
+        Collection<Pelicula> films = filmRepository.findFilmsByDirector("Clive_Donner");
         System.out.println(films);
 
 
