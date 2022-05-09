@@ -17,8 +17,17 @@ public class FilmsRecommenderService {
 
     public  void  runExample(){
         System.out.println("Peliculas con el director: ");
-        Collection<Pelicula> films = filmRepository.findFilmsByDirector("Clive_Donner");
-        System.out.println(films);
+        Collection<Pelicula> filmsDirector = filmRepository.findFilmsByDirector("Clive_Donner");
+        System.out.println(filmsDirector);
+        Collection<Pelicula> filmsGuionista = filmRepository.findFilmsByGuionista("Rich Eustis");
+        System.out.println(filmsGuionista);
+        Collection<Pelicula> filmsCompositor = filmRepository.findFilmsByCompositor("Nagesh Kukunoor");
+        System.out.println(filmsCompositor);
+        Collection<Pelicula> filmsPais = filmRepository.findFilmsByPais("France");
+        System.out.println(filmsPais);
+        Collection<Pelicula> filmsActor = filmRepository.findFilmsByActor("Jack_Klaff");
+        System.out.println(filmsActor);
+        
 
 
     }
