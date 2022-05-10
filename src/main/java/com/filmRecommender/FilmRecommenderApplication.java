@@ -6,7 +6,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.data.neo4j.repository.config.EnableNeo4jRepositories;
 
-import com.filmRecommender.Service.FilmsRecommenderService;
+import com.filmRecommender.service.FilmsRecommenderService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 

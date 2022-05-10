@@ -1,4 +1,4 @@
-package com.filmRecommender.Service;
+package com.filmRecommender.service;
 
 
 import java.util.Collection;
