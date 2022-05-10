@@ -1,10 +1,16 @@
 package com.filmRecommender.service;
 
 
-import java.util.Collection;
 
-import com.filmRecommender.model.Pelicula;
+import java.util.List;
+
+import com.filmRecommender.model.*;
+import com.filmRecommender.repository.ActorRepository;
+import com.filmRecommender.repository.CompositorRepository;
+import com.filmRecommender.repository.DirectorRepository;
 import com.filmRecommender.repository.FilmRepository;
+import com.filmRecommender.repository.GuionistaRepository;
+import com.filmRecommender.repository.PaisRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -14,22 +20,40 @@ public class FilmsRecommenderService {
     
     @Autowired
 	FilmRepository filmRepository;
+    @Autowired
+	DirectorRepository directorRepository;
+    @Autowired
+	CompositorRepository compositorRepository;
+    @Autowired
+	ActorRepository actorRepository;
+    @Autowired
+	GuionistaRepository guionistaRepository;
+    @Autowired
+	PaisRepository paisRepository;
 
-    public  void  runExample(){
-        System.out.println("Peliculas con el director: Clive_Donner");
-        Collection<Pelicula> filmsDirector = filmRepository.findFilmsByDirector("Clive_Donner");
-        filmsDirector.forEach(film -> System.out.println(film.getNombre()));
-        System.out.println("Peliculas con el guionista: Rich Eustis");
-        Collection<Pelicula> filmsGuionista = filmRepository.findFilmsByGuionista("Rich Eustis");
-        filmsGuionista.forEach(film -> System.out.println(film.getNombre()));
-        System.out.println("Peliculas con el compositor: Nagesh Kukunoor");
-        Collection<Pelicula> filmsCompositor = filmRepository.findFilmsByCompositor("Nagesh Kukunoor");
-        filmsCompositor.forEach(film -> System.out.println(film.getNombre()));
-        System.out.println("Peliculas del pais: France");
-        Collection<Pelicula> filmsPais = filmRepository.findFilmsByPais("France");
-        filmsPais.forEach(film -> System.out.println(film.getNombre()));
-        System.out.println("Peliculas con el actor: Jack_Klaff");
-        Collection<Pelicula> filmsActor = filmRepository.findFilmsByActor("Jack_Klaff");
-        filmsActor.forEach(film -> System.out.println(film.getNombre()));
+    public  List<Director> getDirectores(){
+        System.out.println(directorRepository.getDirectores());
+        return directorRepository.getDirectores();
     }
+
+    public  List<Compositor> getCompositores(){
+        System.out.println(compositorRepository.getCompositores());
+        return compositorRepository.getCompositores();
+    }
+
+    public  List<Actor> getActores(){
+        System.out.println(actorRepository.getActores());
+        return actorRepository.getActores();
+    }
+
+    public  List<Guionista> getGuionistas(){
+        System.out.println(guionistaRepository.getGuionistas());
+        return guionistaRepository.getGuionistas();
+    }
+
+    public  List<Pais> getPaises(){
+        System.out.println(paisRepository.getPaises());
+        return paisRepository.getPaises();
+    }
+
 }

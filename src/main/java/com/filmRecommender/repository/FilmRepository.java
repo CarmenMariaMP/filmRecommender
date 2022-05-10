@@ -33,5 +33,7 @@ public interface FilmRepository extends Neo4jRepository<Pelicula, String>{
     "WHERE a.nombre = $0 " +
         "RETURN pelicula")
     List<Pelicula> findFilmsByActor(String nombreActor);
+
+    
 }
 
