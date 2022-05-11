@@ -20,15 +20,15 @@ public class InitialController {
 	
 	@GetMapping("/selector")
     public String selector(ModelMap model) {
-		List<Director> directores = filmRecommenderService.getDirectores();
+		List<String> directores = filmRecommenderService.getDirectores();
 		model.addAttribute("directores", directores);
-		List<Actor> actores = filmRecommenderService.getActores();
+		List<String> actores = filmRecommenderService.getActores();
 		model.addAttribute("actores", actores);
-		List<Guionista> guionistas = filmRecommenderService.getGuionistas();
+		List<String> guionistas = filmRecommenderService.getGuionistas();
 		model.addAttribute("guionistas", guionistas);
-		List<Compositor> compositores = filmRecommenderService.getCompositores();
+		List<String> compositores = filmRecommenderService.getCompositores();
 		model.addAttribute("compositores", compositores);
-		List<Pais> paises = filmRecommenderService.getPaises();
+		List<String> paises = filmRecommenderService.getPaises();
 		model.addAttribute("paises", paises);
 		return "selector";
 	}

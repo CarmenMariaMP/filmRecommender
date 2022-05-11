@@ -31,27 +31,27 @@ public class FilmsRecommenderService {
     @Autowired
 	PaisRepository paisRepository;
 
-    public  List<Director> getDirectores(){
+    public  List<String> getDirectores(){
         System.out.println(directorRepository.getDirectores());
         return directorRepository.getDirectores();
     }
 
-    public  List<Compositor> getCompositores(){
+    public  List<String> getCompositores(){
         System.out.println(compositorRepository.getCompositores());
         return compositorRepository.getCompositores();
     }
 
-    public  List<Actor> getActores(){
+    public  List<String> getActores(){
         System.out.println(actorRepository.getActores());
         return actorRepository.getActores();
     }
 
-    public  List<Guionista> getGuionistas(){
+    public  List<String> getGuionistas(){
         System.out.println(guionistaRepository.getGuionistas());
         return guionistaRepository.getGuionistas();
     }
 
-    public  List<Pais> getPaises(){
+    public  List<String> getPaises(){
         System.out.println(paisRepository.getPaises());
         return paisRepository.getPaises();
     }

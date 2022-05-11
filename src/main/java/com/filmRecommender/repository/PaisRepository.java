@@ -9,7 +9,7 @@ import org.springframework.data.neo4j.repository.query.Query;
 public interface PaisRepository extends Neo4jRepository<Pais, String>{
 
     @Query("MATCH (p:Pais) " +
-        "RETURN DISTINCT p")
-    List<Pais> getPaises();
+        "RETURN DISTINCT p.nombre")
+    List<String> getPaises();
     
 }

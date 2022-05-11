@@ -10,7 +10,7 @@ import org.springframework.data.neo4j.repository.query.Query;
 public interface GuionistaRepository extends Neo4jRepository<Guionista, String>{
 
     @Query("MATCH (g:Guionista) " +
-        "RETURN DISTINCT g")
-    List<Guionista> getGuionistas();
+        "RETURN DISTINCT g.nombre")
+    List<String> getGuionistas();
     
 }
