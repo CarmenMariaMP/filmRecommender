@@ -34,6 +34,9 @@ public interface FilmRepository extends Neo4jRepository<Pelicula, String>{
         "RETURN pelicula")
     List<Pelicula> findFilmsByActor(String nombreActor);
 
-    
+    @Query("Match (pelicula:Pelicula)" + 
+    " Where pelicula.nombre = $0 " + 
+    "RETURN pelicula")
+    Pelicula findFilmByName(String nombrePelicula);
 }
 

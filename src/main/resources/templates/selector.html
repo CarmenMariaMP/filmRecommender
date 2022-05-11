@@ -52,39 +52,42 @@
         <div class="row">
           <div class="mb-3 col-sm-4">
             <label for="dropDownList" class="form-label">Directores/as</label>
-            <select class="form-control" id="dropDownList">
+            <select name= "director" class="form-control" id="dropDownList">
+              <option value="" selected>Choose here</option>
               <option th:each="director : ${directores}" th:value="${director}" th:text="${director}"></option>
             </select>
           </div>
           <div class="mb-3 col-sm-4">
             <label for="dropDownList" class="form-label">Guionistas</label>
-            <select class="form-control" id="dropDownList">
-              <option th:each="guionista : ${guionistas}" th:value="${guionista}" th:text="${guionista}"></option>
+            <select name="guionista" class="form-control" id="dropDownList">
+              <option value="" selected>Choose here</option>
+              <option  th:each="guionista : ${guionistas}" th:value="${guionista}" th:text="${guionista}"></option>
             </select>
           </div>
           <div class="mb-3 col-sm-4">
             <label for="dropDownList" class="form-label">Compositores/as</label>
-            <select class="form-control" id="dropDownList">
-              <option th:each="compositor : ${compositores}" th:value="${compositor}" th:text="${compositor}"></option>
+            <select name="compositor" class="form-control" id="dropDownList">
+              <option value="" selected>Choose here</option>
+              <option  th:each="compositor : ${compositores}" th:value="${compositor}" th:text="${compositor}"></option>
             </select>
           </div>
         </div>
         <div class="row">
           <div class="mb-3 col-sm-4">
             <label for="dropDownList" class="form-label">Actores/Actrices</label>
-            <select select class="form-select" multiple aria-label="multiple select example" id="dropDownList">
-              <option th:each="actor : ${actores}" th:value="${actor}" th:text="${actor}"></option>
+            <select name= "actor" class="form-select" multiple aria-label="multiple select example" id="dropDownList">
+              <option name= "actor" th:each="actor : ${actores}" th:value="${actor}" th:text="${actor}"></option>
             </select>
           </div>
           <div class="mb-3 col-sm-4">
             <label for="dropDownList" class="form-label">Países</label>
-            <select select class="form-select" multiple aria-label="multiple select example" id="dropDownList">
-              <option th:each="pais : ${paises}" th:value="${pais}" th:text="${pais}"></option>
+            <select name= "pais" class="form-select" multiple aria-label="multiple select example" id="dropDownList">
+              <option name= "pais" th:each="pais : ${paises}" th:value="${pais}" th:text="${pais}"></option>
             </select>
           </div>
           <div class="mb-3 col-sm-4">
             <label for="disabledTextInput" class="form-label">Duración</label>
-            <input type="text" id="disabledTextInput" class="form-control" placeholder="Inserte duración máxima en minutos">
+            <input name= "duracion" type="text" id="disabledTextInput" class="form-control" placeholder="Inserte duración máxima en minutos">
           </div>
         </div>
         <br>
