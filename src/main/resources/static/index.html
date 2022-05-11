@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="https://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8" />
@@ -25,12 +25,13 @@
 <body>
   <br>
  <div>
-  <div class="col-md-2 col-md-offset-5 text-center">
-    <a href="/"><img src="../static/logo_rp.PNG" width="72" height="72"></a>
-</div>
   <div class="container d-flex justify-content-center" style="margin-top: 13%;width: 100%;">
   <div class="card text-center" style="background:#E4D00A;opacity: 0.95">
     <h5 class="card-header" style="background:#E4D00A;opacity: 0.95"> Film recommender</h5>
+    <br>
+    <div class="col-md-2 col-md-offset-5 text-center d-flex justify-content-center">
+      <a href="/"><img th:src="@{/static/logo_rp.PNG}" width="72" height="72"></a>
+  </div>
     <div class="card-body" style="background-color:#E4D00A;opacity: 0.95">
       <h5 class="card-title">Tu recomendador de películas</h5>
       <p class="card-text">Escoge tus preferencias y te recomendaremos las películas que mejor se ajusten a ti</p>

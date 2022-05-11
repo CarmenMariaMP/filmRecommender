@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="https://www.thymeleaf.org">
 
 <head>
   <meta charset="UTF-8" />
@@ -51,71 +51,45 @@
         <br>
         <div class="row">
           <div class="mb-3 col-sm-4">
-            <label for="Select" class="form-label">Directores/as</label>
-            <select id="Select" class="form-select">
-              <option>A</option>
-              <option>B</option>
-              <option>C</option>
+            <label for="dropDownList" class="form-label">Directores/as</label>
+            <select class="form-control" id="dropDownList">
+              <option th:each="director : ${directores}" th:value="${director}" th:text="${director}"></option>
             </select>
           </div>
           <div class="mb-3 col-sm-4">
-            <label for="Select" class="form-label">Guionistas</label>
-            <select id="Select" class="form-select">
-              <option>A</option>
-              <option>B</option>
-              <option>C</option>
+            <label for="dropDownList" class="form-label">Guionistas</label>
+            <select class="form-control" id="dropDownList">
+              <option th:each="guionista : ${guionistas}" th:value="${guionista}" th:text="${guionista}"></option>
             </select>
           </div>
           <div class="mb-3 col-sm-4">
-            <label for="Select" class="form-label">Compositores/as</label>
-            <select class="form-select" multiple aria-label="multiple select example">
-              <option selected>Open this select menu</option>
-              <option value="1">One</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
-              <option value="1">One</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
-              <option value="1">One</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
-              <option value="1">One</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
+            <label for="dropDownList" class="form-label">Compositores/as</label>
+            <select class="form-control" id="dropDownList">
+              <option th:each="compositor : ${compositores}" th:value="${compositor}" th:text="${compositor}"></option>
             </select>
           </div>
         </div>
         <div class="row">
           <div class="mb-3 col-sm-4">
-            <label for="Select" class="form-label">Actores/Actrices</label>
-            <select id="Select" class="form-select">
-              <option>A</option>
-              <option>B</option>
-              <option>C</option>
+            <label for="dropDownList" class="form-label">Actores/Actrices</label>
+            <select select class="form-select" multiple aria-label="multiple select example" id="dropDownList">
+              <option th:each="actor : ${actores}" th:value="${actor}" th:text="${actor}"></option>
             </select>
           </div>
           <div class="mb-3 col-sm-4">
-            <label for="Select" class="form-label">Países</label>
-            <select id="Select" class="form-select">
-              <option>A</option>
-              <option>B</option>
-              <option>C</option>
+            <label for="dropDownList" class="form-label">Países</label>
+            <select select class="form-select" multiple aria-label="multiple select example" id="dropDownList">
+              <option th:each="pais : ${paises}" th:value="${pais}" th:text="${pais}"></option>
             </select>
           </div>
           <div class="mb-3 col-sm-4">
             <label for="disabledTextInput" class="form-label">Duración</label>
-            <input type="text" id="disabledTextInput" class="form-control" placeholder="Inserte duración máxima">
+            <input type="text" id="disabledTextInput" class="form-control" placeholder="Inserte duración máxima en minutos">
           </div>
         </div>
-        <div class="mb-3">
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="disabledFieldsetCheck" disabled>
-            <label class="form-check-label" for="disabledFieldsetCheck">
-              Can't check this
-            </label>
-          </div>
-        </div>
-        <button type="submit" class="btn d-grid gap-2 col-2 mx-auto" style="background-color:grey; color:aliceblue">Aceptar</button>
+        <br>
+        <button type="submit" class="btn d-grid gap-2 col-2 mx-auto"
+          style="background-color:grey; color:aliceblue">Aceptar</button>
         <p></p>
       </fieldset>
     </form>
