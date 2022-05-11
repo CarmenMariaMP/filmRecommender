@@ -1,6 +1,7 @@
 package com.filmRecommender.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import com.filmRecommender.model.*;
 import com.filmRecommender.service.FilmsRecommenderService;
@@ -9,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 
 
@@ -33,4 +36,10 @@ public class InitialController {
 		return "selector";
 	}
 
+	@PostMapping("/recomendar")
+	public String recomendar(@RequestParam Map<List<String>,String> allParams,ModelMap model) {
+		System.out.println("Parameters are " + allParams.entrySet());
+		
+		return "redirect:/selector";
+	}
 }
