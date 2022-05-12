@@ -23,7 +23,12 @@ public class InitialController {
 
 	@Autowired
 	FilmsRecommenderService filmRecommenderService;
-
+	
+	@GetMapping("/")
+	public String inicion(ModelMap model) {
+		return "index";
+	}
+	
 	@GetMapping("/selector")
 	public String selector(ModelMap model) {
 		List<String> directores = filmRecommenderService.getDirectores();
