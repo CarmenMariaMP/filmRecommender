@@ -43,6 +43,6 @@ public class Pelicula implements Serializable {
     private Duracion duracion;
 
     @Relationship(type = "actua")
-    private List<Actor> acores;
+    private List<Actor> actores;
     
 }

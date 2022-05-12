@@ -86,15 +86,16 @@ public class InitialController {
 
 			for (int i = 0; i < 3; i++) {
 				topRecomendadas.add(filmRecommenderService.getPeliculabyName(sortedRecomendaciones.keySet().stream()
-						.collect(Collectors.toList()).get(sortedRecomendaciones.size() - i)));
+						.collect(Collectors.toList()).get(sortedRecomendaciones.size() - i -1)));
 			}
 		} else {
 
 			for (int i = 0; i < sortedRecomendaciones.size(); i++) {
 				topRecomendadas.add(filmRecommenderService.getPeliculabyName(sortedRecomendaciones.keySet().stream()
-						.collect(Collectors.toList()).get(sortedRecomendaciones.size() - i)));
+						.collect(Collectors.toList()).get(sortedRecomendaciones.size() - i -1)));
 			}
 		}
+		System.out.println(topRecomendadas.get(0).getDirectores());
 		model.addAttribute("topRecomendadas", topRecomendadas);
 		return "listado";
 	}
