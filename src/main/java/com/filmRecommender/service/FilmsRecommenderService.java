@@ -84,7 +84,7 @@ public class FilmsRecommenderService {
         Long result = 0L;
         try{
 
-        result = Long.parseLong(duracionRepository.getDuracion(nombrePelicula).trim());} 
+        result = Long.parseLong(duracionRepository.getDuracion(nombrePelicula).trim().split("\\.")[0]);} 
         catch(NumberFormatException e){
             return 0L;
         }
