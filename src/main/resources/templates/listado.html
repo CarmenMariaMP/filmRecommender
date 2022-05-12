@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="https://www.thymeleaf.org">
 
 <head>
   <meta charset="UTF-8" />
@@ -29,8 +29,9 @@
 <body>
   <div class="collapse" id="navbarToggleExternalContent">
     <div class="bg-dark p-4">
-      <h5 class="text-white h4">Collapsed content</h5>
-      <span class="text-muted">Toggleable via the navbar brand.</span>
+      <h5 class="text-white h4">RP (Recomendador de películas)</h5>
+      <span class="text-muted">Trabajo realizado por Carmen Mª Muñoz Pérez y Francisco Rodríguez Pérez para la asignatura
+        de CBD (Complemento de Base de Datos).</span>
     </div>
   </div>
   <nav class="navbar navbar-dark bg-dark">
@@ -38,18 +39,22 @@
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
+      <a href="/" class="btn d-grid gap-2 col-1"
+      style="color:aliceblue"> Inicio</a>
+      <a href="/selector" class="btn d-grid gap-2 col-1"
+      style="color:aliceblue"> Selector</a>
     </div>
   </nav>
   <br>
-  <div class="container d-flex justify-content-center">
-    <div class="row" th:each="pelicula : ${topRecomendadas}">
+  <div class="d-flex justify-content-center">
+    <div class="row container-fluid" th:each="pelicula : ${topRecomendadas}">
       <div >
-        <div class="card" style="background:#E4D00A;opacity: 0.95">
+        <div class="card h-100" style="background:#E4D00A;opacity: 0.95">
           <div class="card-body">
             <h5 class="card-title" th:text="${pelicula.nombre}"></h5>
             <ol class="list-group list-group-numbered">
               <li class="list-group-item d-flex justify-content-between align-items-start">
-                <div class="ms-2 me-auto">
+                <div class="ms-5 me-auto">
                   <div class="fw-bold">Director/es</div>
                   <ul>
                     <li class="container" style="background:white" th:each="director : ${pelicula.directores}" th:text="${director.nombre}"></li>
@@ -57,7 +62,7 @@
                 </div>
               </li>
               <li class="list-group-item d-flex justify-content-between align-items-start">
-                <div class="ms-2 me-auto">
+                <div class="ms-5 me-auto">
                   <div class="fw-bold">Guionista/s</div>
                   <ul>
                     <li class="container" style="background:white" th:each="guionista : ${pelicula.guionistas}" th:text="${guionista.nombre}"></li>
@@ -65,7 +70,7 @@
                 </div>
               </li>
               <li class="list-group-item d-flex justify-content-between align-items-start">
-                <div class="ms-2 me-auto">
+                <div class="ms-5 me-auto">
                   <div class="fw-bold">Compositor/es</div>
                   <ul>
                     <li class="container" style="background:white" th:each="compositor : ${pelicula.compositores}" th:text="${compositor.nombre}"></li>
@@ -73,7 +78,7 @@
                 </div>
               </li>
               <li class="list-group-item d-flex justify-content-between align-items-start">
-                <div class="ms-2 me-auto">
+                <div class="ms-5 me-auto">
                   <div class="fw-bold">Actor/es</div>
                   <ul>
                     <li class="container" style="background:white" th:each="actor : ${pelicula.actores}" th:text="${actor.nombre}"></li>
@@ -82,7 +87,7 @@
               </li>
             <p class="card-text"></p>
               <li class="list-group-item d-flex justify-content-between align-items-start">
-                <div class="ms-2 me-auto">
+                <div class="ms-5 me-auto">
                   <div class="fw-bold">País/es</div>
                   <ul>
                     <li class="container" style="background:white" th:each="pais : ${pelicula.paises}" th:text="${pais.nombre}"></li>
@@ -90,7 +95,7 @@
                 </div>
               </li>
               <li class="list-group-item d-flex justify-content-between align-items-start">
-                <div class="ms-2 me-auto">
+                <div class="ms-5 me-auto">
                   <div class="fw-bold">Duración</div>
                   <ul>
                     <li class="container" style="background:white" th:text="${pelicula.duracion.duracion}"> </li>
