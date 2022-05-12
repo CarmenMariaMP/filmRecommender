@@ -23,6 +23,6 @@ public class Duracion implements Serializable {
     private String id;
 
     @Property("duracion")
-    private Long duracion;
+    private String duracion;
     
 }

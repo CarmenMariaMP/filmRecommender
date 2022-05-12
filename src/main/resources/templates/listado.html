@@ -43,7 +43,7 @@
   <br>
   <div class="container d-flex justify-content-center">
     <div class="row" th:each="pelicula : ${topRecomendadas}">
-      <div class="col-11">
+      <div >
         <div class="card" style="background:#E4D00A;opacity: 0.95">
           <div class="card-body">
             <h5 class="card-title" th:text="${pelicula.nombre}"></h5>
@@ -93,7 +93,7 @@
                 <div class="ms-2 me-auto">
                   <div class="fw-bold">Duración</div>
                   <ul>
-                    <li class="container" style="background:white" th:text="${pelicula.duracion}"></li>
+                    <li class="container" style="background:white" th:text="${pelicula.duracion.duracion}"> </li>
                   </ul>
                 </div>
               </li>

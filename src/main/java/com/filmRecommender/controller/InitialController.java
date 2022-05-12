@@ -10,6 +10,7 @@ import java.util.stream.Collectors;
 import com.filmRecommender.model.*;
 import com.filmRecommender.service.FilmsRecommenderService;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -44,11 +45,13 @@ public class InitialController {
 	}
 
 	@PostMapping("/recomendar")
-	public String recomendar(@RequestParam(value = "director", required = false) String director,
+	public String recomendar(@RequestParam HashMap<String, String> allParams,
+			@RequestParam(value = "director", required = false) String director,
 			@RequestParam(value = "guionista", required = false) String guionista,
 			@RequestParam(value = "compositor", required = false) String compositor,
 			@RequestParam(value = "actor", required = false) List<String> actor,
-			@RequestParam(value = "pais", required = false) List<String> pais, ModelMap model) {
+			@RequestParam(value = "pais", required = false) List<String> pais,
+			@RequestParam(value = "duracion", required = false) String duracion, ModelMap model) {
 
 		HashMap<String, Integer> recomendaciones = new HashMap<>();
 		// Peliculas con dicho director
@@ -80,23 +83,47 @@ public class InitialController {
 				recomendaciones = actualizarRecomendaciones(recomendaciones, peliculas);
 			}
 		}
-		HashMap<String, Integer> sortedRecomendaciones = sortByValue(recomendaciones);
-		List<Pelicula> topRecomendadas = new ArrayList<>();
-		if (sortedRecomendaciones.size() > 3) {
+		if (duracion != null) {
+			if (StringUtils.isNumeric(duracion)) {
 
-			for (int i = 0; i < 3; i++) {
-				topRecomendadas.add(filmRecommenderService.getPeliculabyName(sortedRecomendaciones.keySet().stream()
-						.collect(Collectors.toList()).get(sortedRecomendaciones.size() - i -1)));
-			}
-		} else {
+				Long duracionNumerica = Long.parseLong(duracion);
+				for (String i : recomendaciones.keySet()) {
+					Long duracion_pelicula = filmRecommenderService.getDuracionByFilm(i);
 
-			for (int i = 0; i < sortedRecomendaciones.size(); i++) {
-				topRecomendadas.add(filmRecommenderService.getPeliculabyName(sortedRecomendaciones.keySet().stream()
-						.collect(Collectors.toList()).get(sortedRecomendaciones.size() - i -1)));
+					duracion_pelicula = duracion_pelicula / (long) 60;
+					if (duracion_pelicula > duracionNumerica || duracion_pelicula > 0L) {
+						recomendaciones.put(i,
+								recomendaciones.get(i) + 1);
+					} else {
+						recomendaciones.put(i,
+								recomendaciones.get(i) + 2);
+					}
+				}
 			}
 		}
-		System.out.println(topRecomendadas.get(0).getDirectores());
-		model.addAttribute("topRecomendadas", topRecomendadas);
+		// En el caso de que no haya ninguna pelicula que coincida con los criterios de
+		// busqueda al listado se le pasara una lista vacia
+		if (recomendaciones.keySet().size() > 0) {
+			HashMap<String, Integer> sortedRecomendaciones = sortByValue(recomendaciones);
+			List<Pelicula> topRecomendadas = new ArrayList<>();
+			if (sortedRecomendaciones.size() > 3) {
+
+				for (int i = 0; i < 3; i++) {
+					topRecomendadas.add(filmRecommenderService.getPeliculabyName(sortedRecomendaciones.keySet().stream()
+							.collect(Collectors.toList()).get(sortedRecomendaciones.size() - i - 1)));
+				}
+			} else {
+
+				for (int i = 0; i < sortedRecomendaciones.size(); i++) {
+					topRecomendadas.add(filmRecommenderService.getPeliculabyName(sortedRecomendaciones.keySet().stream()
+							.collect(Collectors.toList()).get(sortedRecomendaciones.size() - i - 1)));
+				}
+			}
+			System.out.println(topRecomendadas.get(0).getDirectores());
+			model.addAttribute("topRecomendadas", topRecomendadas);
+		} else {
+			model.addAttribute("topRecomendadas", new ArrayList<Pelicula>());
+		}
 		return "listado";
 	}
 

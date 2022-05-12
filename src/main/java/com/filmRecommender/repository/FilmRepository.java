@@ -34,9 +34,9 @@ public interface FilmRepository extends Neo4jRepository<Pelicula, String>{
         "RETURN pelicula")
     List<Pelicula> findFilmsByActor(String nombreActor);
 
-    @Query("Match (pelicula:Pelicula)-[ac:actua]->(a:Actor), (pelicula:Pelicula)-[dir:dirigida]->(d:Director), (pelicula:Pelicula)-[gui:guionizada]->(g:Guionista), (pelicula:Pelicula)-[com:compuesta]->(c:Compositor), (pelicula:Pelicula)-[de:de]->(p:Pais)" + 
+    @Query("Match (pelicula:Pelicula)-[dur:dura]->(durac:Duracion),(pelicula:Pelicula)-[ac:actua]->(a:Actor), (pelicula:Pelicula)-[dir:dirigida]->(d:Director), (pelicula:Pelicula)-[gui:guionizada]->(g:Guionista), (pelicula:Pelicula)-[com:compuesta]->(c:Compositor), (pelicula:Pelicula)-[de:de]->(p:Pais)" + 
     " Where pelicula.nombre = $0 " + 
-    "RETURN pelicula, collect(ac), collect(a), collect(dir), collect(d), collect(gui), collect(g), collect(com), collect(c), collect(de), collect(p)")
+    "RETURN pelicula, collect(ac), collect(a), collect(dir), collect(d), collect(gui), collect(g), collect(com), collect(c), collect(de), collect(p), collect(dur), collect(durac)")
     Pelicula findFilmByName(String nombrePelicula);
 }
 

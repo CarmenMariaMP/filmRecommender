@@ -8,10 +8,12 @@ import com.filmRecommender.model.*;
 import com.filmRecommender.repository.ActorRepository;
 import com.filmRecommender.repository.CompositorRepository;
 import com.filmRecommender.repository.DirectorRepository;
+import com.filmRecommender.repository.DuracionRepository;
 import com.filmRecommender.repository.FilmRepository;
 import com.filmRecommender.repository.GuionistaRepository;
 import com.filmRecommender.repository.PaisRepository;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -30,6 +32,8 @@ public class FilmsRecommenderService {
 	GuionistaRepository guionistaRepository;
     @Autowired
 	PaisRepository paisRepository;
+    @Autowired
+    DuracionRepository duracionRepository;
 
     public  List<String> getDirectores(){
         return directorRepository.getDirectores();
@@ -75,4 +79,15 @@ public class FilmsRecommenderService {
         return filmRepository.findFilmByName(nombrePelicula);
     }
 
+    public Long getDuracionByFilm(String nombrePelicula){
+        System.out.println(StringUtils.isNumeric(duracionRepository.getDuracion(nombrePelicula).trim()));
+        Long result = 0L;
+        try{
+
+        result = Long.parseLong(duracionRepository.getDuracion(nombrePelicula).trim());} 
+        catch(NumberFormatException e){
+            return 0L;
+        }
+        return result;
+    }
 }
