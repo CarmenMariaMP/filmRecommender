@@ -34,7 +34,7 @@ public class Pelicula implements Serializable {
     private List<Guionista> guionistas;
 
     @Relationship(type = "compuesta")
-    private List<Compositor> compositor;
+    private List<Compositor> compositores;
 
     @Relationship(type = "de")
     private List<Pais> paises;
