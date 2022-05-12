@@ -109,14 +109,22 @@ public class InitialController {
 			if (sortedRecomendaciones.size() > 3) {
 
 				for (int i = 0; i < 3; i++) {
-					topRecomendadas.add(filmRecommenderService.getPeliculabyName(sortedRecomendaciones.keySet().stream()
-							.collect(Collectors.toList()).get(sortedRecomendaciones.size() - i - 1)));
+					Pelicula peliTop = filmRecommenderService.getPeliculabyName(sortedRecomendaciones.keySet().stream()
+							.collect(Collectors.toList()).get(sortedRecomendaciones.size() - i - 1));
+					Duracion d = peliTop.getDuracion();
+					Duracion minutes = duracionToMinutes(d);
+					peliTop.setDuracion(minutes);
+					topRecomendadas.add(peliTop);
 				}
 			} else {
 
 				for (int i = 0; i < sortedRecomendaciones.size(); i++) {
-					topRecomendadas.add(filmRecommenderService.getPeliculabyName(sortedRecomendaciones.keySet().stream()
-							.collect(Collectors.toList()).get(sortedRecomendaciones.size() - i - 1)));
+					Pelicula peliTop = filmRecommenderService.getPeliculabyName(sortedRecomendaciones.keySet().stream()
+							.collect(Collectors.toList()).get(sortedRecomendaciones.size() - i - 1));
+					Duracion d = peliTop.getDuracion();
+					Duracion minutes = duracionToMinutes(d);
+					peliTop.setDuracion(minutes);
+					topRecomendadas.add(peliTop);
 				}
 			}
 			System.out.println(topRecomendadas.get(0).getDirectores());
@@ -147,5 +155,19 @@ public class InitialController {
 						Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e1, LinkedHashMap::new));
 
 		return temp;
+	}
+
+	private Duracion duracionToMinutes(Duracion d) {
+		Duracion duracion = new Duracion();
+		String segundos = d.getDuracion();
+		try {
+			String arraySegundos [] = segundos.split("\\.");
+			Long segundosNumber = Long.parseLong(arraySegundos[0]);
+			Long minutosNumber = segundosNumber / (long) 60;
+			duracion.setDuracion(minutosNumber.toString());
+		} catch (NumberFormatException e) {
+			duracion.setDuracion("No disponible");
+		}
+		return duracion;
 	}
 }
