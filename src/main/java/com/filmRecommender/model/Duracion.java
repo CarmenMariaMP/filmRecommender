@@ -16,13 +16,13 @@ import lombok.Setter;
 @Setter
 public class Duracion implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
-    @Id
-    @GeneratedValue(UUIDStringGenerator.class)
-    private String id;
+	@Id
+	@GeneratedValue(UUIDStringGenerator.class)
+	private String id;
 
-    @Property("duracion")
-    private String duracion;
-    
+	@Property("duracion")
+	private String duracion;
+
 }

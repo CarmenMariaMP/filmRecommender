@@ -18,31 +18,31 @@ import lombok.Setter;
 @Setter
 public class Pelicula implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
-    @Id
-    @GeneratedValue(UUIDStringGenerator.class)
-    private String id;
+	@Id
+	@GeneratedValue(UUIDStringGenerator.class)
+	private String id;
 
-    @Property("nombre")
-    private String nombre;
+	@Property("nombre")
+	private String nombre;
 
-    @Relationship(type = "dirigida")
-    private List<Director> directores;
+	@Relationship(type = "dirigida")
+	private List<Director> directores;
 
-    @Relationship(type = "guionizada")
-    private List<Guionista> guionistas;
+	@Relationship(type = "guionizada")
+	private List<Guionista> guionistas;
 
-    @Relationship(type = "compuesta")
-    private List<Compositor> compositores;
+	@Relationship(type = "compuesta")
+	private List<Compositor> compositores;
 
-    @Relationship(type = "de")
-    private List<Pais> paises;
+	@Relationship(type = "de")
+	private List<Pais> paises;
 
-    @Relationship(type = "dura")
-    private Duracion duracion;
+	@Relationship(type = "dura")
+	private Duracion duracion;
 
-    @Relationship(type = "actua")
-    private List<Actor> actores;
-    
+	@Relationship(type = "actua")
+	private List<Actor> actores;
+
 }

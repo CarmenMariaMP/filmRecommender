@@ -7,7 +7,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-
 import com.filmRecommender.model.*;
 import com.filmRecommender.service.FilmsRecommenderService;
 
@@ -24,12 +23,12 @@ public class InitialController {
 
 	@Autowired
 	FilmsRecommenderService filmRecommenderService;
-	
+
 	@GetMapping("/")
 	public String inicion(ModelMap model) {
 		return "index";
 	}
-	
+
 	@GetMapping("/selector")
 	public String selector(ModelMap model) {
 		List<String> directores = filmRecommenderService.getDirectores();
@@ -98,11 +97,9 @@ public class InitialController {
 
 					duracion_pelicula = duracion_pelicula / (long) 60;
 					if (duracion_pelicula > duracionNumerica || duracion_pelicula > 0L) {
-						recomendaciones.put(i,
-								recomendaciones.get(i) + 1);
+						recomendaciones.put(i, recomendaciones.get(i) + 1);
 					} else {
-						recomendaciones.put(i,
-								recomendaciones.get(i) + 2);
+						recomendaciones.put(i, recomendaciones.get(i) + 2);
 					}
 				}
 			}
@@ -154,11 +151,12 @@ public class InitialController {
 		return recomendaciones;
 	}
 
-	// Codigo procedente de https://www.geeksforgeeks.org
+	// Codigo procedente de
+	// https://www.geeksforgeeks.org/sorting-a-hashmap-according-to-values/
 	private HashMap<String, Integer> sortByValue(HashMap<String, Integer> hm) {
 		HashMap<String, Integer> temp = hm.entrySet().stream()
-				.sorted((i1, i2) -> i1.getValue().compareTo(i2.getValue())).collect(Collectors.toMap(
-						Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e1, LinkedHashMap::new));
+				.sorted((i1, i2) -> i1.getValue().compareTo(i2.getValue()))
+				.collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e1, LinkedHashMap::new));
 
 		return temp;
 	}
@@ -167,7 +165,7 @@ public class InitialController {
 		Duracion duracion = new Duracion();
 		String segundos = d.getDuracion();
 		try {
-			String arraySegundos [] = segundos.split("\\.");
+			String arraySegundos[] = segundos.split("\\.");
 			Long segundosNumber = Long.parseLong(arraySegundos[0]);
 			Long minutosNumber = segundosNumber / (long) 60;
 			duracion.setDuracion(minutosNumber.toString());

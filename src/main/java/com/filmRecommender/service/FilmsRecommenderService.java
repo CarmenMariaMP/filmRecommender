@@ -1,7 +1,5 @@
 package com.filmRecommender.service;
 
-
-
 import java.util.List;
 
 import com.filmRecommender.model.*;
@@ -19,75 +17,75 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class FilmsRecommenderService {
-    
-    @Autowired
+
+	@Autowired
 	FilmRepository filmRepository;
-    @Autowired
+	@Autowired
 	DirectorRepository directorRepository;
-    @Autowired
+	@Autowired
 	CompositorRepository compositorRepository;
-    @Autowired
+	@Autowired
 	ActorRepository actorRepository;
-    @Autowired
+	@Autowired
 	GuionistaRepository guionistaRepository;
-    @Autowired
+	@Autowired
 	PaisRepository paisRepository;
-    @Autowired
-    DuracionRepository duracionRepository;
+	@Autowired
+	DuracionRepository duracionRepository;
 
-    public  List<String> getDirectores(){
-        return directorRepository.getDirectores();
-    }
+	public List<String> getDirectores() {
+		return directorRepository.getDirectores();
+	}
 
-    public  List<String> getCompositores(){
-        return compositorRepository.getCompositores();
-    }
+	public List<String> getCompositores() {
+		return compositorRepository.getCompositores();
+	}
 
-    public  List<String> getActores(){
-        return actorRepository.getActores();
-    }
+	public List<String> getActores() {
+		return actorRepository.getActores();
+	}
 
-    public  List<String> getGuionistas(){
-        return guionistaRepository.getGuionistas();
-    }
+	public List<String> getGuionistas() {
+		return guionistaRepository.getGuionistas();
+	}
 
-    public  List<String> getPaises(){
-        return paisRepository.getPaises();
-    }
+	public List<String> getPaises() {
+		return paisRepository.getPaises();
+	}
 
-    public List<Pelicula> getPeliculasbyDirector(String director){
-        return filmRepository.findFilmsByDirector(director);
-    }
-    
-    public List<Pelicula> getPeliculasbyCompositor(String compositor){
-        return filmRepository.findFilmsByCompositor(compositor);
-    }
+	public List<Pelicula> getPeliculasbyDirector(String director) {
+		return filmRepository.findFilmsByDirector(director);
+	}
 
-    public List<Pelicula> getPeliculasbyActor(String actor){
-        return filmRepository.findFilmsByActor(actor);
-    }
+	public List<Pelicula> getPeliculasbyCompositor(String compositor) {
+		return filmRepository.findFilmsByCompositor(compositor);
+	}
 
-    public List<Pelicula> getPeliculasbyGuionista(String guionista){
-        return filmRepository.findFilmsByGuionista(guionista);
-    }
+	public List<Pelicula> getPeliculasbyActor(String actor) {
+		return filmRepository.findFilmsByActor(actor);
+	}
 
-    public List<Pelicula> getPeliculasbyPais(String pais){
-        return filmRepository.findFilmsByPais(pais);
-    }
+	public List<Pelicula> getPeliculasbyGuionista(String guionista) {
+		return filmRepository.findFilmsByGuionista(guionista);
+	}
 
-    public Pelicula getPeliculabyName(String nombrePelicula){
-        return filmRepository.findFilmByName(nombrePelicula);
-    }
+	public List<Pelicula> getPeliculasbyPais(String pais) {
+		return filmRepository.findFilmsByPais(pais);
+	}
 
-    public Long getDuracionByFilm(String nombrePelicula){
-        System.out.println(StringUtils.isNumeric(duracionRepository.getDuracion(nombrePelicula).trim()));
-        Long result = 0L;
-        try{
+	public Pelicula getPeliculabyName(String nombrePelicula) {
+		return filmRepository.findFilmByName(nombrePelicula);
+	}
 
-        result = Long.parseLong(duracionRepository.getDuracion(nombrePelicula).trim().split("\\.")[0]);} 
-        catch(NumberFormatException e){
-            return 0L;
-        }
-        return result;
-    }
+	public Long getDuracionByFilm(String nombrePelicula) {
+		System.out.println(StringUtils.isNumeric(duracionRepository.getDuracion(nombrePelicula).trim()));
+		Long result = 0L;
+		try {
+
+			result = Long.parseLong(duracionRepository.getDuracion(nombrePelicula).trim().split("\\.")[0]);
+		} catch (NumberFormatException e) {
+			return 0L;
+		}
+		return result;
+	}
 }

@@ -16,12 +16,12 @@ import lombok.Setter;
 @Setter
 public class Pais implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
-    @Id
-    @GeneratedValue(UUIDStringGenerator.class)
-    private String id;
+	@Id
+	@GeneratedValue(UUIDStringGenerator.class)
+	private String id;
 
-    @Property("nombre")
-    private String nombre;
+	@Property("nombre")
+	private String nombre;
 }
