@@ -12,17 +12,12 @@
 </head>
 
 <style>
-  body::after {
-    content: "";
+  body {
     background-image: url("https://i.blogs.es/4b7486/4k/1366_2000.jpg");
     background-size: cover;
-    opacity: 0.8;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    position: absolute;
-    z-index: -1;
+    opacity: 0.98;
+    background-attachment: fixed;
+    overflow: scroll;
   }
 </style>
 
@@ -107,6 +102,22 @@
         </div>
       </div>
     </div>
+    <div th:if="${topRecomendadas.size == 0}">
+      <div class="container d-flex justify-content-center" style="margin-top: 12%;width: 100%;">
+        <div class="card text-center" style="background:#E4D00A;opacity: 0.95">
+          <div class="d-flex justify-content-center">
+            <div class="col-md-2 col-md-offset-5 text-center ">
+              <a href="/"><img th:src="@{/img/logo_rp.PNG}" width="120" height="100"></a>
+            </div>
+          </div>
+          <div class="card-body" style="background-color:#E4D00A;opacity: 0.95">
+            <h5 class="card-title">No hay ninguna película</h5>
+            <p class="card-text">Parece que no se ha encontrado ninguna película con las características seleccionadas, vuelva a intentarlo</p>
+            <a href="/selector" class="btn d-grid gap-2 col-4 mx-auto"
+              style="background-color:grey; color:aliceblue">Volver</a>
+          </div>
+        </div>
+      </div>
   </div>
 </body>
 <footer></footer>

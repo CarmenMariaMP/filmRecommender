@@ -12,17 +12,12 @@
 </head>
 
 <style>
-  body::after {
-    content: "";
+  body {
     background-image: url("https://i.blogs.es/4b7486/4k/1366_2000.jpg");
     background-size: cover;
-    opacity: 0.8;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    position: absolute;
-    z-index: -1;
+    opacity: 0.98;
+    background-attachment: fixed;
+    overflow: scroll;
   }
 </style>
 
@@ -49,9 +44,11 @@
   <div class="container" style="background:#E4D00A;opacity: 0.95;">
     <form th:action="@{/recomendar}" method="POST">
       <fieldset>
-        <br>
-        <legend>Recomendador de películas</legend>
-        <br>
+        <div class="d-flex justify-content-center">
+          <div class="col-md-2 col-md-offset-5 text-center ">
+            <a href="/"><img th:src="@{/img/logo_rp.PNG}" width="120" height="100"></a>
+          </div>
+        </div>
         <div class="row">
           <div class="mb-3 col-sm-4">
             <label for="dropDownList" class="form-label">Directores/as</label>
@@ -89,7 +86,7 @@
             </select>
           </div>
           <div class="mb-3 col-sm-4">
-            <label for="disabledTextInput" class="form-label">Duración Máxima (Min)</label>
+            <label for="disabledTextInput" class="form-label">Duración Máxima</label>
             <input name= "duracion" type="text" id="disabledTextInput" class="form-control" placeholder="Inserte duración máxima en minutos">
           </div>
         </div>
